@@ -3,6 +3,8 @@ import java.util.Scanner;
 /**
  * Created by aibar on 6/30/2017.
  */
+//Author: Andres
+//This program converts a word to PigLatin
 public class PigLatin {
     public static void main(String[] args) {
         Scanner scnr = new Scanner(System.in);
@@ -14,7 +16,7 @@ public class PigLatin {
             System.out.println("Enter a line to be translated: ");
             userInput = scnr.nextLine();
             if (!userInput.equals(null)) {
-                createPig(userInput);
+                createPig(userInput); //createPig is the method that does the converstion to PigLatin
             } else {
                 System.out.println("Type something!");
             }
@@ -34,14 +36,17 @@ public class PigLatin {
         String uiLowercase;
         String vowels = "aeiou";
 
-        for (int i = 0; i < userInput.length(); i++) {
+        for (int i = 0; i < userInput.length(); i++) { //this for loop finds the first vowel in a word, removes leading consonants
+            //and appends them in the end of the word.
             firstVowel = String.valueOf(userInput.charAt(i));
             if (vowels.contains(String.valueOf(userInput.charAt(i)))) {
                 textToBe.setLength(0);
+                //check if word contains punctuation marks.
                 if (userInput.charAt(userInput.length() - 1) == '?' || userInput.charAt(userInput.length() - 1) == '!' || userInput.charAt(userInput.length() - 1) == '.') {
                     symbolLastIndex = userInput.charAt(userInput.length() - 1);
                     uiLowercase = userInput.toLowerCase();
                     uiLowercase = uiLowercase.replace("?", "").replace("!", "").replace(".", "");
+                    //ifElses checks if the first letter is capitalized, and if the first letter is a vowel or a consonant
                     ifElses(userInput, textToBe, firstLetter, symbolLastIndex, uiLowercase, vowels, firstVowel);
                 } else {
                     uiLowercase = userInput.toLowerCase();
@@ -50,7 +55,7 @@ public class PigLatin {
                 i = userInput.length();
             }
         }
-        if (isNum(userInput)) {
+        if (isNum(userInput)) { //find if input is a number
             System.out.println(userInput);
         }
     }
